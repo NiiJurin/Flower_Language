@@ -30,7 +30,7 @@ for flower, descriptions in flower_quotes.items():
 flower_embeddings = {label: get_sentence_embedding(label) for label in flower_labels.keys()}
 
 # 類似する花言葉を見つける関数
-def find_most_similar_flower(sentence):
+def find_most_similar_flowers(sentence, top_n=3):
     # 入力文章をベクトル化
     sentence_embedding = get_sentence_embedding(sentence)
 
@@ -38,24 +38,25 @@ def find_most_similar_flower(sentence):
     similarities = {label: cosine_similarity(sentence_embedding, embedding).item()
                     for label, embedding in flower_embeddings.items()}
 
-    # 最も類似度の高い花言葉を取得
-    max_similarity = max(similarities.values())
-    most_similar_flowers = [label for label, similarity in similarities.items() if similarity == max_similarity]
+    # 類似度が高い順に上位top_nの花言葉を取得
+    sorted_similarities = sorted(similarities.items(), key=lambda x: x[1], reverse=True)[:top_n]
 
     # 最も似ている花言葉に対応する花の名前を取得
     corresponding_flowers = []
-    for flower_label in most_similar_flowers:
+    for flower_label, similarity in sorted_similarities:
         corresponding_flowers.extend(flower_labels[flower_label])
 
     # 重複を除外して結果を返す
     corresponding_flowers = list(set(corresponding_flowers))
-    return most_similar_flowers, corresponding_flowers, max_similarity
+    return sorted_similarities, corresponding_flowers
 
 # 例として文章を解析
-input_sentence = input()
-similar_flowers, corresponding_flowers, similarity_score = find_most_similar_flower(input_sentence)
+input_sentence = "新しいことに挑戦するたびに、あなたと一緒なら頑張れるという気持ちがわきます。"
+similar_flowers, corresponding_flowers = find_most_similar_flowers(input_sentence)
 
 # 結果を表示
-print(f"最も似ている花言葉: {similar_flowers}")
+print("最も似ている花言葉 (Top 3):")
+for flower, similarity in similar_flowers:
+    print(f"  花言葉: {flower}, 類似度: {similarity}")
+
 print(f"対応する花: {corresponding_flowers}")
-print(f"類似度: {similarity_score}")
