@@ -51,7 +51,7 @@ def find_most_similar_flowers(sentence, top_n=3):
     return sorted_similarities, corresponding_flowers
 
 # 例として文章を解析
-input_sentence = "新しいことに挑戦するたびに、あなたと一緒なら頑張れるという気持ちがわきます。"
+input_sentence = "私のお墓の前で 泣かないでくださいそこに私はいません 眠ってなんかいません千の風に千の風になってあの大きな空を吹きわたっています 秋には光になって "
 similar_flowers, corresponding_flowers = find_most_similar_flowers(input_sentence)
 
 # 結果を表示
