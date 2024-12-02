@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>手紙と花と言葉</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>相手に送る手紙</h1>
+        <textarea id="inputText" rows="4" cols="50" placeholder="文章を入力してください..."></textarea>
+        <button onclick="getFlowerMatch()">送信</button>
+        <div id="result"></div>
+        <div id="flowerImage"></div>
+        <div id="qrCode"></div>
+    </div>
+
+    <script>
+        function getFlowerMatch() {
+            const inputText = document.getElementById("inputText").value;
+
+            // Flask APIへのリクエストを送信
+            fetch('http://localhost:5000/api/flower_match', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: inputText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 結果を表示
+                let resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = `
+                    <h2> 文章に合う花 </h2>
+                    ${data.flowers.map((flowerInfo, index) => `
+                        <div onclick="showDetails('${flowerInfo.image}', '${data.qr_code}')">
+                            <p><strong>花:</strong> ${flowerInfo.flower_label}</p>
+                            <p><strong>花言葉:</strong> ${flowerInfo.flower}</p>
+                            <p><strong>類似度:</strong> ${flowerInfo.similarity.toFixed(3)}</p>
+                        </div>
+                        <hr>
+                    `).join('')}
+                `;
+            })
+            .catch(error => {
+                console.error('エラー:', error);
+            });
+        }
+
+        function showDetails(imageUrl, qrCodeUrl) {
+            // 花の画像を表示
+            let flowerImageDiv = document.getElementById("flowerImage");
+            flowerImageDiv.innerHTML = `<img src="${imageUrl}" alt="花の画像" width="300">`;
+
+            // QRコードを表示
+            let qrCodeDiv = document.getElementById("qrCode");
+            qrCodeDiv.innerHTML = `<img src="${qrCodeUrl}" alt="QRコード" width="200">`;
+        }
+    </script>
+</body>
+</html>
