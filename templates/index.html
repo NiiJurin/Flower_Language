@@ -2,13 +2,179 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>手紙と花と言葉</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* リセット */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            margin-left: 60px; /* サイドメニュー分のスペース */
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            resize: none;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        button {
+            background-color: #3498db;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result, #flowerImage, #qrCode {
+            margin-top: 20px;
+        }
+
+        #result div {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        #result div:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #flowerImage img, #qrCode img {
+            margin-top: 10px;
+        }
+
+        /* サイドメニューのスタイル */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #2c3e50;
+            color: #fff;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
+    <div class="sidebar" id="sidebar">
+        <h2>ナビゲーション</h2>
+        <ul>
+            <li><a href="home.html">ホーム</a></li>
+            <li><a href="#">花一覧</a></li>
+            <li><a href="#">過去の結果を見る</a></li>
+            <li><a href="#">設定</a></li>
+            <li><a href="#">ヘルプ</a></li>
+        </ul>
+    </div>
+
     <div class="container">
         <h1>相手に送る手紙</h1>
-        <textarea id="inputText" rows="4" cols="50" placeholder="文章を入力してください..."></textarea>
+        <textarea id="inputText" rows="4" placeholder="文章を入力してください..."></textarea>
         <button onclick="getFlowerMatch()">送信</button>
         <div id="result"></div>
         <div id="flowerImage"></div>
@@ -16,6 +182,8 @@
     </div>
 
     <script>
+
+
         function getFlowerMatch() {
             const inputText = document.getElementById("inputText").value;
 
@@ -32,14 +200,14 @@
                 // 結果を表示
                 let resultDiv = document.getElementById("result");
                 resultDiv.innerHTML = `
-                    <h2> 文章に合う花 </h2>
+                    <h2> 手紙に合うお花一覧 </h2>
                     ${data.flowers.map((flowerInfo, index) => `
                         <div onclick="showDetails('${flowerInfo.image}', '${data.qr_code}')">
-                            <p><strong>花:</strong> ${flowerInfo.flower_label}</p>
+                            <p><strong>お花:</strong> ${flowerInfo.flower_label}</p>
                             <p><strong>花言葉:</strong> ${flowerInfo.flower}</p>
                             <p><strong>類似度:</strong> ${flowerInfo.similarity.toFixed(3)}</p>
+
                         </div>
-                        <hr>
                     `).join('')}
                 `;
             })
