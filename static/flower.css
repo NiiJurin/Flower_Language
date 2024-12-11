@@ -1,0 +1,128 @@
+/* リセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f4f4f9;
+}
+
+/* ヒーローヘッダー */
+.hero {
+    height: 100vh;
+    background: url('https://source.unsplash.com/1600x900/?flowers') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+}
+
+/* パララックス背景 */
+.parallax {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+/* アニメーションの初期状態 */
+.slide-in {
+    opacity: 0;
+    transform: translateY(100px);  /* 少し下から出現 */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* アニメーションの適用状態 */
+.slide-in.active {
+    opacity: 1;
+    transform: translateY(0);  /* 元の位置に移動 */
+}
+
+.parallax-1 {
+    background-image: url('https://source.unsplash.com/1600x900/?nature,flowers');
+}
+
+.parallax-2 {
+    background-image: url('https://source.unsplash.com/1600x900/?garden');
+}
+
+/* 通常セクション */
+.content-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f4f4f9;
+}
+
+.content-section h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.text-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* フッター */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+
+/* 下から上にスクロールで表示 */
+.scroll-up {
+    opacity: 1;
+    transform: translateY(-100px);  /* 上に出現 */
+}
+
+/* 上から下にスクロールで表示 */
+.scroll-down {
+    opacity: 1;
+    transform: translateY(3000);  /* 元の位置に表示 */
+}
+/* 初期状態 */
+.slide-in {
+    opacity: 0;
+    transform: translateY(100px);  /* 下に見えない位置 */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 下から上にスクロールで表示 */
+.scroll-up {
+    opacity: 1;
+    transform: translateY(-100px);  /* 上に出現 */
+}
+
+/* 上から下にスクロールで表示 */
+.scroll-down {
+    opacity: 1;
+    transform: translateY(100px);  /* 元の位置に表示 */
+}
+
+
+
