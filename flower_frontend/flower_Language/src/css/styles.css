@@ -1,0 +1,118 @@
+/* CSS for Flower Language History Page */
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to bottom, rgba(255, 227, 223, 0.986), rgb(255, 255, 255) 70%, rgb(231, 255, 240), rgba(215, 255, 245, 0.966));
+  color: #352a2a;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.history-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.history-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.animated-title {
+  font-size: 3em;
+  color: #4a4a7d;
+  animation: fadeInDown 2s ease;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  color: #7575a3;
+  margin-top: 10px;
+  animation: fadeIn 3s ease;
+}
+
+.history-content {
+  margin-top: 40px;
+}
+
+.history-section {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 2em;
+  color: #4a4a7d;
+  margin-bottom: 20px;
+  animation: fadeInUp 2s ease;
+}
+
+.animated-text {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeIn 4s ease forwards;
+  animation-fill-mode: forwards;
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 1.2em;
+  color: #7575a3;
+  margin-top: 30px;
+  animation: fadeIn 5s ease;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Scroll-triggered animation */
+.animated-text {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.5s ease;
+}
+
+.animated-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
