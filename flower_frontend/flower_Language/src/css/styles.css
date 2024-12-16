@@ -1,118 +1,145 @@
-/* CSS for Flower Language History Page */
-
-/* Global Reset */
+/* 全体のリセット */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+/* ホームページ全体 */
+.home-page {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, rgba(255, 227, 223, 0.986), rgb(255, 255, 255) 70%, rgb(231, 255, 240), rgba(215, 255, 245, 0.966));
-  color: #352a2a;
-  line-height: 1.6;
-  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  background: #f3f4f6;
 }
 
-.history-page {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+/* ページスナップセクション */
+.page-snap {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
-.history-header {
-  text-align: center;
-  margin-bottom: 50px;
+/* コンテンツコンテナ */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.animated-title {
-  font-size: 3em;
-  color: #4a4a7d;
-  animation: fadeInDown 2s ease;
+/* ヒーローセクション */
+.hero-section {
+  background: url('../assets/hero-bg.jpg') center/cover no-repeat;
+  color: white;
 }
 
-.subtitle {
-  font-size: 1.5em;
-  color: #7575a3;
-  margin-top: 10px;
-  animation: fadeIn 3s ease;
+.hero-title {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
 }
 
-.history-content {
-  margin-top: 40px;
+.hero-description {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.history-section {
-  margin-bottom: 60px;
+.hero-button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  color: white;
+  background: #3498db;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-button:hover {
+  background: #2980b9;
+}
+
+/* 機能紹介セクション */
+.features-section {
+  background: linear-gradient(to right, #f4f4f4, #e0f7fa);
+  padding: 60px 20px;
 }
 
 .section-title {
-  font-size: 2em;
-  color: #4a4a7d;
+  font-size: 2.5rem;
   margin-bottom: 20px;
-  animation: fadeInUp 2s ease;
 }
 
-.animated-text {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(50px);
-  animation: fadeIn 4s ease forwards;
-  animation-fill-mode: forwards;
+.section-description {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  color: #555;
 }
 
-.footer-text {
+.feature-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.feature-card {
+  width: 300px;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+/* 人気の花言葉セクション */
+.popular-section {
+  background: url('../assets/popular-bg.jpg') center/cover no-repeat;
+  padding: 60px 20px;
+  color: white;
+}
+
+.popular-flowers {
+  display: flex;
+  gap: 20px;
+}
+
+.flower-card {
+  font-size: 1.8rem;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.flower-card:hover {
+  transform: translateY(-10px);
+}
+
+/* フッター */
+.footer {
+  padding: 15px;
+  background: #2c3e50;
+  color: white;
   text-align: center;
-  font-size: 1.2em;
-  color: #7575a3;
-  margin-top: 30px;
-  animation: fadeIn 5s ease;
+  font-size: 0.9rem;
 }
 
-/* Animation Keyframes */
+/* アニメーション */
 @keyframes fadeIn {
-  0% {
-      opacity: 0;
-      transform: translateY(50px);
-  }
-  100% {
-      opacity: 1;
-      transform: translateY(0);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes fadeInDown {
-  0% {
-      opacity: 0;
-      transform: translateY(-50px);
-  }
-  100% {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  0% {
-      opacity: 0;
-      transform: translateY(50px);
-  }
-  100% {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-/* Scroll-triggered animation */
-.animated-text {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1.5s ease;
-}
-
-.animated-text.show {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

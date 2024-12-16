@@ -1,39 +1,59 @@
-import React, { useEffect } from 'react';
-import './css/styles.css';
+import React from "react";
+import "./css/styles.css";
 
-function FlowerLanguageHistory() {
+function HomePage() {
   return (
-      <div className="history-page">
-          <header className="history-header">
-              <h1 className="animated-title">花言葉の歴史</h1>
-              <p className="subtitle">花が語る物語 - 愛、別れ、希望</p>
-          </header>
+    <div className="home-page">
+      {/* ヒーローセクション */}
+      <header className="hero-section page-snap">
+        <div className="content-container">
+          <h1 className="hero-title">心を伝える花言葉を見つけよう</h1>
+          <p className="hero-description">大切な手紙に最適な花と言葉を見つけましょう。</p>
+          <button className="hero-button">今すぐ始める</button>
+        </div>
+      </header>
 
-          <main className="history-content">
-              <section className="history-section">
-                  <h2 className="section-title">花言葉の起源</h2>
-                  <p className="animated-text">花言葉の歴史は、古代文明にまでさかのぼります。古代エジプトやギリシャ、ローマでは、花々は神々への捧げ物や愛の象徴として扱われました。</p>
-                  <p className="animated-text">その後、オスマン帝国で"セラム"と呼ばれる花言葉の文化が生まれ、ヨーロッパへ広まりました。ビクトリア時代のイギリスでは、言葉に出せない感情を花で伝える文化が発展しました。</p>
-              </section>
+      {/* 機能紹介セクション */}
+      <section className="features-section page-snap">
+        <div className="content-container">
+          <h2 className="section-title">ページ紹介</h2>
+          <p className="section-description">花言葉検索、花言葉の歴史、花の種類を詳しく知ることができます。</p>
+          <div className="feature-cards">
+            <div className="feature-card">
+              <h3>手紙の花言葉検索</h3>
+              <p>大切な手紙に最適な花を見つけましょう。</p>
+            </div>
+            <div className="feature-card">
+              <h3>花言葉の歴史を見る</h3>
+              <p>花言葉という概念が出来た時代のお話。</p>
+            </div>
+            <div className="feature-card">
+              <h3>花の種類を知る</h3>
+              <p>季節ごとの美しい花々を探しましょう。</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <section className="history-section">
-                  <h2 className="section-title">花がもたらすメッセージ</h2>
-                  <p className="animated-text">花は愛、友情、感謝、そして別れなど、さまざまな感情を表現します。バラは愛を、リリーは純粋さを、スミレは誠実さを象徴します。</p>
-                  <p className="animated-text">手紙とともに贈られる花は、想いを形に変え、忘れられない記憶を作ります。</p>
-              </section>
+      {/* 人気の花言葉セクション */}
+      <section className="popular-section page-snap">
+        <div className="content-container">
+          <h2 className="section-title">人気の花言葉</h2>
+          <p className="section-description">多くの人に愛される花と言葉をご覧ください。</p>
+          <div className="popular-flowers">
+            <div className="flower-card">🌸 桜 - 儚い美しさ</div>
+            <div className="flower-card">🌼 ひまわり - 希望と誠実</div>
+            <div className="flower-card">🌹 バラ - 愛と情熱</div>
+          </div>
+        </div>
+      </section>
 
-              <section className="history-section">
-                  <h2 className="section-title">未来へ続く花言葉</h2>
-                  <p className="animated-text">現代でも、花言葉は愛や友情の象徴として生き続けています。特別な日や何気ない瞬間、一輪の花が心に響くメッセージを伝えます。</p>
-                  <p className="animated-text">花に込められた想いは、時代を超え、これからも永遠に受け継がれていくでしょう。</p>
-              </section>
-          </main>
-
-          <footer className="history-footer">
-              <p className="footer-text">想いを込めた花を、あなたの物語に。</p>
-          </footer>
-      </div>
+      {/* フッター */}
+      <footer className="footer page-snap">
+        <p>&copy; SilVerse Natural | お問い合わせ | 利用規約 | プライバシーポリシー</p>
+      </footer>
+    </div>
   );
 }
 
-export default FlowerLanguageHistory;
+export default HomePage;
