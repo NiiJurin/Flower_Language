@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './css/Flower_Diagnosis.css';
 
-function App() {
+function Flower_Diagnosis() {
     const [inputText, setInputText] = useState('');
     const [result, setResult] = useState([]);
     const [flowerImage, setFlowerImage] = useState('');
@@ -31,17 +31,6 @@ function App() {
 
     return (
         <div className="app">
-            <div className="sidebar" id="sidebar">
-                <h2>ナビゲーション</h2>
-                <ul>
-                    <li><a href="#">ホーム</a></li>
-                    <li><a href="#">花一覧</a></li>
-                    <li><a href="#">過去の結果を見る</a></li>
-                    <li><a href="#">設定</a></li>
-                    <li><a href="#">ヘルプ</a></li>
-                </ul>
-            </div>
-
             <div className="container">
                 <h1>相手に送る手紙</h1>
                 <textarea
@@ -95,4 +84,4 @@ function App() {
     );
 }
 
-export default App;
+export default Flower_Diagnosis;

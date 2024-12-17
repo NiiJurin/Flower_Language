@@ -1,145 +1,129 @@
-/* 全体のリセット */
+/* 全体リセット */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ホームページ全体 */
-.home-page {
+html, body {
+  width: 100%;
+  height: 100%;
   font-family: 'Arial', sans-serif;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
-  background: #f3f4f6;
+  scroll-behavior: smooth;
+  overflow: hidden;
+
 }
 
-/* ページスナップセクション */
+.home-page {
+  scroll-snap-type: y mandatory;  /* 縦スクロール時のスナップ */
+  overflow-y: scroll;
+  height: 100vh;
+  width: 100vw;
+}
+
 .page-snap {
-  scroll-snap-align: start;
+  scroll-snap-align: start;  /* セクション開始位置でスナップ */
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-}
-
-/* コンテンツコンテナ */
-.content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-/* ヒーローセクション */
-.hero-section {
-  background: url('../assets/hero-bg.jpg') center/cover no-repeat;
-  color: white;
-}
-
-.hero-title {
-  font-size: 4rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 10px;
-}
-
-.hero-description {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.hero-button {
-  padding: 15px 30px;
-  font-size: 1.5rem;
-  color: white;
-  background: #3498db;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.hero-button:hover {
-  background: #2980b9;
-}
-
-/* 機能紹介セクション */
-.features-section {
-  background: linear-gradient(to right, #f4f4f4, #e0f7fa);
-  padding: 60px 20px;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.section-description {
-  font-size: 1.5rem;
-  margin-bottom: 40px;
-  color: #555;
-}
-
-.feature-cards {
-  display: flex;
-  gap: 20px;
-}
-
-.feature-card {
-  width: 300px;
-  padding: 30px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-}
-
-/* 人気の花言葉セクション */
-.popular-section {
-  background: url('../assets/popular-bg.jpg') center/cover no-repeat;
-  padding: 60px 20px;
-  color: white;
-}
-
-.popular-flowers {
-  display: flex;
-  gap: 20px;
-}
-
-.flower-card {
-  font-size: 1.8rem;
+  text-align: center;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
 }
 
-.flower-card:hover {
-  transform: translateY(-10px);
+.navbar {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background: #161435;
+  color: white;
+  padding: 1vh 1vh;
+  z-index: 1000;
 }
 
-/* フッター */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+/* セクション構造 */
+.hero-section {
+  background: #FFEBE6;
+}
+.vertical-section {
+  background: #E6E6FF;
+}
+.vertical-text {
+  writing-mode: vertical-rl;  /* 縦書きの設定 */
+  text-orientation: upright;  /* テキストの直立表示 */
+}
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 100;
+  font-family: fantasy;
+  margin-bottom: 120px;
+  color: #333;
+}
+.hero-description {
+  font-size: 1.0rem;
+  color: #333;
+  font-family: fantasy;
+  margin-top: 100px;
+}
+
+.features-section {
+  background: #E6F7FF;
+}
+
+.popular-section {
+  background: #E6FFE6;
+}
+
+.contact-section {
+  background: #FFF7E6;
+}
+
 .footer {
-  padding: 15px;
   background: #2c3e50;
   color: white;
+  padding: 10px;
   text-align: center;
-  font-size: 0.9rem;
 }
 
-/* アニメーション */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* スムーズなフェードイン */
+.content-container {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 2s ease, transform 2s ease;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.page-snap.show .content-container {
+  opacity: 1;
+  transform: translateY(0);
 }
+

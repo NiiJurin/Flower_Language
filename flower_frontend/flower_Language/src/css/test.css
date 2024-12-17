@@ -8,16 +8,33 @@
   /* コンテナのスタイル */
   .container {
     height: 100vh;
+    width: 100vw;
     overflow-y: scroll; /* 縦スクロール */
     scroll-snap-type: y mandatory; /* ページスナップ */
   }
   
+  .section-1 {
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    padding: 30px;
+    scroll-snap-align: start; /* スナップポイント */
+    /* background: linear-gradient(to bottom, #66f3d0, #28e6ff);  */
+    color: white;
+    font-family: "Arial", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+  }
   /* 各セクションのスタイル */
   .section {
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
+    padding: 30px;
     scroll-snap-align: start; /* スナップポイント */
     background: linear-gradient(to bottom, #66f3d0, #28e6ff); /* 背景色 */
     color: white;
