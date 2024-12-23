@@ -3,6 +3,7 @@ import "./css/Flower_History.css";
 
 function FlowerHistory() {
   return (
+    <div className="app">
     <section className="flower-history">
       {/* セクションタイトル */}
       <div className="section-header">
@@ -49,6 +50,7 @@ function FlowerHistory() {
         </div>
       </div>
     </section>
+    </div>
   );
 }
 
