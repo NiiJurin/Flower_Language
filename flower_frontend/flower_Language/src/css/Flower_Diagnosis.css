@@ -4,10 +4,15 @@
   max-width: 600px;
   margin: auto;
   height: 100vh;
+  width: 100vw;
 }
 
 .container {
   margin-top: 100px;
+  left: 50%;
+  width: 8em;
+  display: block;
+  
 }
 
 
