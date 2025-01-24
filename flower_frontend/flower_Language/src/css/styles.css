@@ -61,10 +61,11 @@ html, body {
 .nav-links {
   list-style: none;
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   white-space: nowrap;
   margin-left: 40px;
   margin-right: 40px;
+  font-size: 1.2rem;
 }
 
 .nav-links li {

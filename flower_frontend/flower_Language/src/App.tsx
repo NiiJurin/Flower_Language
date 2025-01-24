@@ -5,6 +5,7 @@ import FlowerDiagnosis from "./Flower_Diagnosis";
 import ContactPage from "./test";
 import Navbar from "./Navbar";
 import FlowerHistory from "./Flower_History";
+import SilverseNatural from "./SilverseNatural";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <Navbar/>
       <Routes>
+        <Route path="/Silve" element={<SilverseNatural />}/>
         <Route path="/" element={<HomePage />} />
         <Route path="/flower-diagnosis" element={<FlowerDiagnosis />} />
         <Route path="/contact" element={<ContactPage />} />

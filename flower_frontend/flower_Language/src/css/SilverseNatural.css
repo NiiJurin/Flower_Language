@@ -1,0 +1,38 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #e0f7fa, #e8f5e9);
+  color: #2c3e50;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.silverse-natural {
+  width: 100vw;
+  height: 100vh;
+}
+
+.page-snap {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.content-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.page-snap.show .content-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+

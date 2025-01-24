@@ -1,7 +1,4 @@
-/* 全体リセット */
-/* CSS for Flower Language History Page */
-
-/* Global Reset */
+/* ========= 全体リセット ========= */
 * {
   margin: 0;
   padding: 0;
@@ -10,179 +7,240 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, rgba(255, 227, 223, 0.986), rgb(255, 255, 255) 70%, rgb(231, 255, 240), rgba(215, 255, 245, 0.966));
+  /* 背景のグラデーション例 */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 227, 223, 0.986),
+    rgb(255, 255, 255) 70%,
+    rgb(231, 255, 240),
+    rgba(215, 255, 245, 0.966)
+  );
   color: #352a2a;
   line-height: 1.6;
   overflow-x: hidden;
 }
-  
-  .home-page {
-    scroll-snap-type: y mandatory;  /* 縦スクロール時のスナップ */
-    overflow-y: scroll;
-    height: 100vh;
-    width: 100vw;
-  }
-  
-  .page-snap {
-    scroll-snap-align: start;  /* セクション開始位置でスナップ */
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .navbar {
-    position: fixed;
-    width: 100%;
-    height: 12%;
-    background: #333;
-    color: white;
-    padding: 15px 20px;
-    z-index: 1000;
-  }
-  
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .nav-logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 30px;
-    color: rgb(255, 173, 255);
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-  }
-  
-  .nav-links li {
-    margin-left: 20px;
-  }
-  
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-  }
-  
-  .nav-links a:hover {
-    text-decoration: underline;
-  }
-  /* セクション構造 */
-  .hero-section {
-    background: #FFEBE6;
-  }
 
-  .section-title
-  {
-    justify-content: start;
-    align-items: start;
-    background-color: transparent;
-    font-size: 2.6rem;
-    font-weight: 100;
-    font-family: fantasy;
-
-    color: #333;
-  }
-.PageGrids
-{
-    margin-top: 100px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    padding: 20px;
-    background: #f4f4f4;
-    border-radius: 10px;
-    grid-template-columns: 37vw 37vw;
-    height: 80vh;
-    width: 80vw;
+/* ========= メインのスクロールコンテナ ========= */
+.home-page {
+  scroll-snap-type: y mandatory; /* 縦スクロール時のスナップを強制 */
+  overflow-y: scroll;
+  height: 100vh;
+  width: 100vw;
 }
 
-.Flower_Diagnosis_Page
-{
-    grid-row: 1; grid-column: 2;
-    margin: 5px;
+/* ========= セクション共通 ========= */
+.page-snap {
+  scroll-snap-align: start; /* セクション開始位置でスナップ */
+  min-height: 100vh;        /* 1セクションの最小高さを画面高さに */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  position: relative;
 }
 
-.Flower_Diagnosis_Title
-{
-    grid-row: 1;grid-column: 1;
+/* ========= コンテナのフェードインアニメ ========= */
+.content-container {
+  opacity: 0;             /* 最初は透明 */
+  transform: translateY(50px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-.Flower_History_Page
-{
-    grid-row: 2; grid-column: 1;
-    margin: 5px;
+.page-snap.show .content-container {
+  opacity: 1;             /* IntersectionObserverで .show が付いたらフェードイン */
+  transform: translateY(0);
 }
 
-  .vertical-section {
-    background: #E6E6FF;
-  }
-  .vertical-text {
-    writing-mode: vertical-rl;  /* 縦書きの設定 */
-    text-orientation: upright;  /* テキストの直立表示 */
-  }
-  .hero-title {
-    font-size: 2.6rem;
-    font-weight: 100;
-    font-family: fantasy;
-    margin-bottom: 100px;
-    color: #333;
-  }
-  .hero-description {
-    font-size: 1.0rem;
-    color: #333;
-    font-family: fantasy;
-    margin-top: 80px;
-  }
-  
-  .features-section {
-    background: #E6F7FF;
-  }
-  
-  .popular-section {
-    background: #E6FFE6;
-  }
-  
-  .contact-section {
-    background: #FFF7E6;
-  }
-  
-  .footer {
-    background: #2c3e50;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .feature-card, .flower-card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .feature-card:hover, .flower-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-
-  }
+/* ========= ヒーローセクション (最初の画面) ========= */
+.hero-section {
+  background: #ffebe6;  /* 薄いピンク背景 */
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 
-  /* スムーズなフェードイン */
-  .content-container {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1.5s ease, transform 1.5s ease;
-  }
-  
-  .page-snap.show .content-container {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 100;
+  font-family: fantasy;
+  color: #333;
+  margin-bottom: 20px;
+  writing-mode: vertical-rl;  /* 縦書きの設定 */
+  text-orientation: upright;  /* テキストの直立表示 */
+}
+.hero-description {
+  font-size: 1.2rem;
+  color: #333;
+  font-family: fantasy;
+  margin-top: 800px;
+  writing-mode: vertical-rl;  /* 縦書きの設定 */
+  text-orientation: upright;  /* テキストの直立表示 */
+}
+
+/* ========= ナビゲーションバー (必要なら使用) ========= */
+.navbar {
+  position: fixed;
+  width: 100%;
+  background: #333;
+  color: white;
+  padding: 15px 20px;
+  z-index: 1000;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgb(255, 173, 255);
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+.nav-links li {
+  margin-left: 20px;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* ========= Aboutセクション ========= */
+.about-section {
+  background: #f9f9f9;
+  /* Flexで横並びにする */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left; /* デフォルト左寄せ */
+}
+
+/* about-contentを横並び2カラムにする */
+.about-content {
+  display: flex;
+  flex-direction: row;  /* 横並び */
+  gap: 60px;
+  max-width: 1000px;    /* 横幅の上限を設定 */
+}
+
+/* 左カラム：タイトル (縦書き) */
+.about-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;   /* 縦書き */
+  text-orientation: upright;
+  font-size: 1.8rem;
+  color: #000;
+  /* レスポンシブのために最小幅など設定可 */
+}
+
+/* 右カラム：本文 & 画像 */
+.about-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px; /* 段落間の余白 */
+  writing-mode: vertical-rl;  /* ここも縦書きにしたいなら */
+  text-orientation: upright;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* 画像を本文の下に配置例 */
+.flower-image {
+  max-width: 200px;
+  margin-top: 20px;
+  align-self: center;
+  object-fit: cover;
+}
+
+/* ========= 特徴セクション ========= */
+.popular-section {
+  background: #e6ffe6; /* 薄いグリーン背景 */
+}
+.section-title {
+  font-size: 2.2rem;
+  font-family: fantasy;
+  margin-bottom: 20px;
+  color: #333;
+}
+.section-description {
+  font-size: 1.2rem;
+  margin: 10px 0 30px;
+}
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.feature-card {
+  background: #fff;
+  padding: 20px;
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ========= お問い合わせセクション ========= */
+.contact-section {
+  background: #fff7e6; /* 薄いオレンジ背景 */
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 15px;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.contact-form button {
+  background: #ffcccc;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.contact-form button:hover {
+  background: #ffaeb9;
+}
+
+/* ========= フッター ========= */
+.footer {
+  background: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.footer .content-container {
+  opacity: 0; /* IntersectionObserverのフェードイン制御に合わせる */
+  transform: translateY(50px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}

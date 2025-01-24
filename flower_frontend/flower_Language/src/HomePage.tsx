@@ -47,40 +47,52 @@ function HomePage() {
         </div>
       </header>
 
-      <section id="features" className="features-section page-snap">
-        <div className="content-container">
-            <div className="PageGrids">
-            <div className="Flower_Diagnosis_Title" >
-                <div className="vertical-text"><h2>手紙を綴る</h2></div>
-                <p>想いに花を添えるための手紙</p>
-            </div>
-            <div className="feature-card Flower_Diagnosis_Page">
-                <h3>手紙を綴る</h3>
-                <p>手紙の内容に応じた花言葉を見つけます。</p>
-            </div>
-            <div className="Flower_History_Title" >
-                <div className="vertical-text"><h2>手紙を綴る</h2></div>
-                <p>想いに花を添えるための手紙</p>
-            </div>
-            <div className="feature-card Flower_History_Page">
-                <h3>花言葉の歴史</h3>
-                <p>花言葉の歴史を探求しましょう。</p>
-            </div>
-            {/* <div className="feature-card">
-                <h3>花の種類</h3>
-                <p>季節ごとの美しい花々を詳しく知ることができます。</p>
-            </div> */}
-            </div>
+      <section id="about" className="about-section page-snap">
+        <div className="about-content content-container">
+          <div className="about-title">
+            <h2>綴り花とは</h2>
+          </div>
+          <div className="about-body">
+            <p>
+              綴り花は、あなたの<strong>想い</strong>を
+              花言葉と共に届けるサービスです。
+            </p>
+            <p>
+              言葉では伝えきれない<strong>心のメッセージ</strong>を、
+              花の美しさと共に綴りましょう。
+
+            </p>
+            <p></p>
+          </div>
+          <div className="about-image">
+            <img
+              src="https://files.oaiusercontent.com/file-SA3QmCT9u3hG9XdKZVDZ8X?se=2025-01-20T02%3A52%3A20Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Db6c2d34e-44ea-458f-ac85-d5601f33ebd6.webp&sig=NOWmhVaqQj4EyPPfp32sVkIB%2Bv/UCefwUIqGLktFPiQ%3D"
+              alt="綴り花"
+              className="flower-image"
+            />
+          </div>
         </div>
       </section>
 
       <section id="popular" className="popular-section page-snap">
-        <div className="content-container">
-          <h2 className="section-title">悩み中</h2>
-          <div className="popular-flowers">
-            <div className="flower-card"> 桜 </div>
-            <div className="flower-card"> ひまわり </div>
-            <div className="flower-card"> バラ </div>
+      <div className="content-container">
+          <h2 className="section-title">特徴</h2>
+          <p className="section-description">
+            綴り花は、手紙の内容に合わせて最適な花言葉や花を提案し、贈る人の気持ちを届ける手助けをします。
+          </p>
+          <div className="features-grid">
+            <div className="feature-card">
+              <h3>手紙を書く</h3>
+              <p>想いを込めた手紙を綴るためのインターフェイスを提供します。</p>
+            </div>
+            <div className="feature-card">
+              <h3>花言葉を学ぶ</h3>
+              <p>花の種類や花言葉の由来について学ぶことができます。</p>
+            </div>
+            <div className="feature-card">
+              <h3>おすすめの花</h3>
+              <p>特定のイベントや感情に最適な花を提案します。</p>
+            </div>
           </div>
         </div>
       </section>
